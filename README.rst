@@ -40,7 +40,9 @@ virtual environments and installing packages.
 Install OS and Python Prerequisites
 -----------------------------------
 
-Install OS and Python dependencies as follows.::
+Install OS and Python dependencies as follows.
+
+::
 
     $ sudo utility/install_os_dependencies.sh install
     $ sudo utility/install_chrome.sh
@@ -51,7 +53,9 @@ Create Postgres Database
 ------------------------
 
 Create a Postgres user and database for your project with appropriate names for
-your site.::
+your site.
+
+::
 
     $ sudo adduser --no-create-home sodar_django_site
     $ sudo su - postgres
@@ -65,7 +69,9 @@ your site.::
 Set Up Virtual Environment
 --------------------------
 
-Set up and activate a virtual environment for running the site. Example below.::
+Set up and activate a virtual environment for running the site. Example below.
+
+::
 
     $ virtualenv -p python3.6 .venv
     $ source .venv/bin/activate
@@ -73,13 +79,17 @@ Set up and activate a virtual environment for running the site. Example below.::
 Install Python Requirements
 ---------------------------
 
-Install Python requirements for local development.::
+Install Python requirements for local development.
+
+::
 
     $ pip install -r requirements/local.txt
     $ pip install -r requirements/test.txt
 
 If you intend to provide LDAP/AD login functionality for your server, also run
-the following.::
+the following.
+
+::
 
     $ pip install -r requirements/ldap.txt
 
@@ -99,7 +109,9 @@ Within the project directory, create an ``.env`` file with environment settings
 for the site. You can use the ``env.example`` file as example.
 
 Make sure to add the Postgres database configuration to your .env file as
-shown in the example below.::
+shown in the example below.
+
+::
 
     $ export DATABASE_URL='postgres://sodar_django_site:sodar_django_site@127.0.0.1/sodar_django_site'
 
@@ -107,11 +119,15 @@ Set Up Django Database and Superuser
 ------------------------------------
 
 Run the following command to migrate your Django database and synchronize
-SODAR Core plugins.::
+SODAR Core plugins.
+
+::
 
     $ ./manage.py migrate
 
-Next create a superuser for your site.::
+Next create a superuser for your site.
+
+::
 
     $ ./manage.py createsuperuser
 
@@ -122,7 +138,9 @@ of a local superuser.
 Run Your Site
 -------------
 
-Now you should be able to run your site.::
+Now you should be able to run your site.
+
+::
 
     $ ./run.sh
 
