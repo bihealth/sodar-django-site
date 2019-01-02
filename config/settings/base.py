@@ -54,12 +54,19 @@ THIRD_PARTY_APPS = [
     'rest_framework',   # For API views
     'knox',  # For token auth
     'docs',  # For the online user documentation/manual
+    'db_file_storage',  # For filesfolders
 
     # SODAR Projectroles app
     'projectroles.apps.ProjectrolesConfig',
 
     # SODAR Timeline app
     'timeline.apps.TimelineConfig',
+
+    # SODAR Filesfolders app
+    'filesfolders.apps.FilesfoldersConfig',
+
+    # SODAR Background Jobs app
+    'bgjobs.apps.BgjobsConfig',
 
     # User Profile site app
     'userprofile.apps.UserprofileConfig',
@@ -139,6 +146,9 @@ DATABASES = {
     'default': env.db('DATABASE_URL', default='postgres:///sodar_core'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = False
+
+# Set django-db-file-storage as the default storage (for filesfolders)
+DEFAULT_FILE_STORAGE = 'db_file_storage.storage.DatabaseFileStorage'
 
 
 # GENERAL CONFIGURATION
@@ -270,6 +280,27 @@ AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
 # Location of root django.contrib.admin URL, use {% url 'admin:index' %}
 ADMIN_URL = r'^admin/'
 
+# Celery configuration (for background jobs)
+# ------------------------------------------------------------------------------
+if USE_TZ:
+    # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-timezone
+    CELERY_TIMEZONE = TIME_ZONE
+# http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-broker_url
+CELERY_BROKER_URL = env.str('CELERY_BROKER_URL', 'redis://localhost:6379/0')
+# http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-result_backend
+CELERY_RESULT_BACKEND = CELERY_BROKER_URL
+# http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-accept_content
+CELERY_ACCEPT_CONTENT = ['json']
+# http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-task_serializer
+CELERY_TASK_SERIALIZER = 'json'
+# http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-result_serializer
+CELERY_RESULT_SERIALIZER = 'json'
+# http://docs.celeryproject.org/en/latest/userguide/configuration.html#task-time-limit
+CELERYD_TASK_TIME_LIMIT = 5 * 60
+# http://docs.celeryproject.org/en/latest/userguide/configuration.html#task-soft-time-limit
+CELERYD_TASK_SOFT_TIME_LIMIT = 60
+
+
 # Django REST framework default auth classes
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -399,6 +430,8 @@ ENABLED_BACKEND_PLUGINS = env.list('ENABLED_BACKEND_PLUGINS', None, [
 # General API settings
 SODAR_API_DEFAULT_VERSION = '0.1'
 SODAR_API_MEDIA_TYPE = 'application/vnd.bihealth.sodar+json'
+SODAR_API_DEFAULT_HOST = env.url(
+    'SODAR_API_DEFAULT_HOST', 'http://0.0.0.0:8000')
 
 
 # Projectroles app settings
@@ -413,17 +446,34 @@ PROJECTROLES_TARGET_CREATE = env.bool('PROJECTROLES_TARGET_CREATE', True)
 PROJECTROLES_ADMIN_OWNER = env.str('PROJECTROLES_ADMIN_OWNER', 'admin')
 
 # General projectroles settings
-PROJECTROLES_SECRET_LENGTH = 32
+PROJECTROLES_DISABLE_CATEGORIES = env.bool(
+    'PROJECTROLES_DISABLE_CATEGORIES', False)
 PROJECTROLES_INVITE_EXPIRY_DAYS = env.int('PROJECTROLES_INVITE_EXPIRY_DAYS', 14)
 PROJECTROLES_SEND_EMAIL = env.bool('PROJECTROLES_SEND_EMAIL', False)
-PROJECTROLES_HELP_HIGHLIGHT_DAYS = 7
 PROJECTROLES_ENABLE_SEARCH = True
-PROJECTROLES_SEARCH_PAGINATION = 5
+
+# Optional projectroles settings
+# PROJECTROLES_SECRET_LENGTH = 32
+# PROJECTROLES_HELP_HIGHLIGHT_DAYS = 7
+# PROJECTROLES_SEARCH_PAGINATION = 5
+# PROJECTROLES_HIDE_APP_LINKS = env.list('PROJECTROLES_HIDE_APP_LINKS', None, [])  # noqa
 
 
 # Timeline app settings
 TIMELINE_PAGINATION = 15
 
 
+# Filesfolders app settings
+FILESFOLDERS_MAX_UPLOAD_SIZE = env.int('FILESFOLDERS_MAX_UPLOAD_SIZE', 10485760)
+FILESFOLDERS_MAX_ARCHIVE_SIZE = env.int(
+    'FILESFOLDERS_MAX_ARCHIVE_SIZE', 52428800)
+FILESFOLDERS_SERVE_AS_ATTACHMENT = False
+FILESFOLDERS_LINK_BAD_REQUEST_MSG = 'Invalid request'
+
+
 # Adminalerts app settings
 ADMINALERTS_PAGINATION = 15
+
+
+# Taskflow backend settings
+TASKFLOW_SODAR_SECRET = env.str('TASKFLOW_SODAR_SECRET', 'CHANGE ME!')

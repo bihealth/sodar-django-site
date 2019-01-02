@@ -21,7 +21,7 @@ It is also readily compatible with Selenium UI testing, coverage checking and
 GitLab continuous integration.
 
 The current version of this site is compatible with
-`SODAR Core v0.3.0 <https://cubi-gitlab.bihealth.org/CUBI_Engineering/CUBI_Data_Mgmt/sodar_core/tags/v0.3.0>`_.
+`SODAR Core v0.4.0 <https://cubi-gitlab.bihealth.org/CUBI_Engineering/CUBI_Data_Mgmt/sodar_core/tags/v0.4.0>`_.
 
 
 Installation for Development
@@ -57,7 +57,6 @@ your site.
 
 ::
 
-    $ sudo adduser --no-create-home sodar_django_site
     $ sudo su - postgres
     $ psql
     $ CREATE DATABASE sodar_django_site;
@@ -153,5 +152,5 @@ Developing your Site
 
 Once the installation is successful, you can continue to add your own
 SODAR based apps. See
-`SODAR Core documentation <https://cubi-gitlab.bihealth.org/CUBI_Engineering/CUBI_Data_Mgmt/sodar_core/tree/v0.3.0/docs>`_.
+`SODAR Core documentation <https://cubi-gitlab.bihealth.org/CUBI_Engineering/CUBI_Data_Mgmt/sodar_core/tree/v0.4.0/docs/source>`_.
 for further instructions.

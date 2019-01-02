@@ -31,7 +31,17 @@ urlpatterns = [
     # Timeline URLs
     url(r'^timeline/', include('timeline.urls')),
 
-    # User Profile URLs
+    # Filesfolders URLs
+    url(r'^files/', include('filesfolders.urls')),
+
+    # django-db-file-storage URLs (obfuscated for users)
+    # TODO: Change the URL to something obfuscated (e.g. random string)
+    url(r'^CHANGE-ME/', include('db_file_storage.urls')),
+
+    # Background Jobs URLs
+    url(r'^bgjobs/', include('bgjobs.urls')),
+
+                  # User Profile URLs
     url(r'^user/', include('userprofile.urls')),
 
     # Admin Alerts URLs
