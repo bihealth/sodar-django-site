@@ -37,6 +37,12 @@ For SODAR Core concepts and instructions, see
 The examples here use virtualenv and pip, but you may also use e.g. conda for
 virtual environments and installing packages.
 
+Requirements
+------------
+
+Python v3.6 or greater is required.
+
+
 Install OS and Python Prerequisites
 -----------------------------------
 
