@@ -19,7 +19,7 @@ setup(
     license='',
     description='Your SODAR Django Site (CHANGE ME)',
     long_description=README,
-    url='https://bihealth.org',
+    url='CHANGE ME',
     author='CHANGE ME',
     author_email='CHANGE ME',
     classifiers=[
@@ -27,6 +27,7 @@ setup(
         'Framework :: Django',
         'Framework :: Django :: 1.11',
         'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
         'Operating System :: Linux',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.6',

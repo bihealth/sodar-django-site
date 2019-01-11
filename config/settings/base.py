@@ -427,9 +427,10 @@ ENABLED_BACKEND_PLUGINS = env.list('ENABLED_BACKEND_PLUGINS', None, [
     # TODO: add your backend plugins here
 ])
 
-# General API settings
+# SODAR API settings
 SODAR_API_DEFAULT_VERSION = '0.1'
-SODAR_API_MEDIA_TYPE = 'application/vnd.bihealth.sodar+json'
+SODAR_API_ALLOWED_VERSIONS = [SODAR_API_DEFAULT_VERSION]
+SODAR_API_MEDIA_TYPE = 'application/vnd.bihealth.sodar-core+json'
 SODAR_API_DEFAULT_HOST = env.url(
     'SODAR_API_DEFAULT_HOST', 'http://0.0.0.0:8000')
 
@@ -477,3 +478,8 @@ ADMINALERTS_PAGINATION = 15
 
 # Taskflow backend settings
 TASKFLOW_SODAR_SECRET = env.str('TASKFLOW_SODAR_SECRET', 'CHANGE ME!')
+
+
+# SODAR constants (uncomment for modifying)
+# from projectroles.constants import get_sodar_constants
+# SODAR_CONSTANTS = get_sodar_constants(default=True)

@@ -1,8 +1,14 @@
 SODAR Django Site
 ^^^^^^^^^^^^^^^^^
 
+.. image:: https://img.shields.io/travis/bihealth/sodar_django_site.svg
+    :target: https://travis-ci.org/bihealth/sodar_django_site
+
+.. image:: https://img.shields.io/badge/License-MIT-yellow.svg
+    :target: https://opensource.org/licenses/MIT
+
 This project contains a minimal `Django 1.11 <https://docs.djangoproject.com/en/1.11/>`_
-site for building `SODAR Core <https://cubi-gitlab.bihealth.org/CUBI_Engineering/CUBI_Data_Mgmt/sodar_core>`_
+site template for building `SODAR Core <https://github.com/bihealth/sodar_core>`_
 based projects.
 
 
@@ -10,7 +16,7 @@ Introduction
 ============
 
 The site is based on one created by the last Django 1.11 release of
-`cookiecutter-django <https://github.com/pydanny/cookiecutter-django/releases/tag/1.11.10>`_.
+`cookiecutter-django <https://github.com/pydanny/cookiecutter-django/tree/1.11.10>`_.
 That project has since moved on to Django 2.x which is not yet supported by
 SODAR Core. This template site remains in 1.11, while updating base requirements
 and omitting things not relevant to SODAR Core based sites.
@@ -18,10 +24,10 @@ and omitting things not relevant to SODAR Core based sites.
 Included in this project are the critical OS and Python requirements, pre-set
 Django settings, a pre-installed SODAR Core framework and some helper scripts.
 It is also readily compatible with Selenium UI testing, coverage checking and
-GitLab continuous integration.
+continuous integration for Travis-CI and GitLab-CI.
 
 The current version of this site is compatible with
-`SODAR Core v0.4.0 <https://cubi-gitlab.bihealth.org/CUBI_Engineering/CUBI_Data_Mgmt/sodar_core/tags/v0.4.0>`_.
+`SODAR Core v0.4.1 <https://github.com/bihealth/sodar_core/tree/v0.4.1>`_.
 
 
 Installation for Development
@@ -32,7 +38,7 @@ For instructions and best practices in Django development, see
 `Two Scoops of Django <https://twoscoopspress.com/products/two-scoops-of-django-1-11>`_.
 
 For SODAR Core concepts and instructions, see
-`SODAR Core documentation <https://cubi-gitlab.bihealth.org/CUBI_Engineering/CUBI_Data_Mgmt/sodar_core/tree/v0.3.0/docs>`_.
+`SODAR Core documentation <https://github.com/bihealth/sodar_core/tree/v0.4.1/docs>`_.
 
 The examples here use virtualenv and pip, but you may also use e.g. conda for
 virtual environments and installing packages.
@@ -40,112 +46,91 @@ virtual environments and installing packages.
 Requirements
 ------------
 
-Python v3.6 or greater is required.
+- Ubuntu 16.04 Xenial
+- Python 3.6+
+- Postgres 9.6+
 
+System Installation
+-------------------
 
-Install OS and Python Prerequisites
------------------------------------
+First you need to install OS dependencies, PostgreSQL 9.6 and Python3.6.
 
-Install OS and Python dependencies as follows.
+.. code-block:: console
 
-::
+    $ sudo utility/install_os_dependencies.sh
+    $ sudo utility/install_python.sh
+    $ sudo utility/install_postgres.sh
 
-    $ sudo utility/install_os_dependencies.sh install
-    $ sudo utility/install_chrome.sh
-    $ pip install --upgrade pip
-    $ utility/install_python_dependencies.sh install
+Database Setup
+--------------
 
-Create Postgres Database
-------------------------
+Create a PostgreSQL user and a database for your application. In the example,
+we use ``sodar_core`` for the database, user name and password. Make sure to
+give the user the permission to create further PostgreSQL databases (used for
+testing).
 
-Create a Postgres user and database for your project with appropriate names for
-your site.
-
-::
+.. code-block:: console
 
     $ sudo su - postgres
     $ psql
-    $ CREATE DATABASE sodar_django_site;
-    $ CREATE USER sodar WITH PASSWORD 'sodar_django_site';
-    $ GRANT ALL PRIVILEGES ON DATABASE sodar_django_site TO sodar_django_site;
-    $ ALTER USER sodar_django_site CREATEDB;
+    $ CREATE DATABASE sodar_core;
+    $ CREATE USER sodar_core WITH PASSWORD 'sodar_core';
+    $ GRANT ALL PRIVILEGES ON DATABASE sodar_core to sodar_core;
+    $ ALTER USER sodar_core CREATEDB;
     $ \q
 
-Set Up Virtual Environment
---------------------------
+You have to add the credentials in the environment variable ``DATABASE_URL``.
+For development it is recommended to place this variable in an ``.env`` file and
+set ``DJANGO_READ_DOT_ENV_FILE=1`` in your actual environment. See
+``config/settings/base.py`` for more information.
 
-Set up and activate a virtual environment for running the site. Example below.
+.. code-block:: console
 
-::
+    $ export DATABASE_URL='postgres://sodar_core:sodar_core@127.0.0.1/sodar_core'
 
+Project Setup
+-------------
+
+Clone the repository, setup and activate the virtual environment. Once in
+the environment, install Python requirements for the project:
+
+.. code-block:: console
+
+    $ git clone git+https://github.com/bihealth/sodar_core.git
+    $ cd sodar_core
+    $ pip install virtualenv
     $ virtualenv -p python3.6 .venv
     $ source .venv/bin/activate
+    $ utility/install_python_dependencies.sh
 
-Install Python Requirements
----------------------------
+LDAP Setup (Optional)
+---------------------
 
-Install Python requirements for local development.
+If you will be using LDAP/AD auth on your site, make sure to also run:
 
-::
+.. code-block:: console
 
-    $ pip install -r requirements/local.txt
-    $ pip install -r requirements/test.txt
-
-If you intend to provide LDAP/AD login functionality for your server, also run
-the following.
-
-::
-
+    $ sudo utility/install_ldap_dependencies.sh
     $ pip install -r requirements/ldap.txt
 
-Rename Site
+Final Setup
 -----------
 
-Rename the ``sodar_django_site`` directory under your project into the name of
-your site.
+Initialize the database (this will also synchronize django-plugins):
 
-**NOTE:** Make sure to search for mentions to ``sodar_django_site`` within files
-and also rename those.
-
-Set Up an Environment Variable File
------------------------------------
-
-Within the project directory, create an ``.env`` file with environment settings
-for the site. You can use the ``env.example`` file as example.
-
-Make sure to add the Postgres database configuration to your .env file as
-shown in the example below.
-
-::
-
-    $ export DATABASE_URL='postgres://sodar_django_site:sodar_django_site@127.0.0.1/sodar_django_site'
-
-Set Up Django Database and Superuser
-------------------------------------
-
-Run the following command to migrate your Django database and synchronize
-SODAR Core plugins.
-
-::
+.. code-block:: console
 
     $ ./manage.py migrate
 
-Next create a superuser for your site.
+Create a Django superuser for the example_site:
 
-::
+.. code-block:: console
 
     $ ./manage.py createsuperuser
 
-**NOTE:** If you are running your site in the ``TARGET`` mode, make sure the
-``PROJECTROLES_ADMIN_OWNER`` variable in your .env file points to the username
-of a local superuser.
+Now you should be able to run the server:
 
-Run Your Site
--------------
-
-Now you should be able to run your site.
-
-::
+.. code-block:: console
 
     $ ./run.sh
 
@@ -158,5 +143,5 @@ Developing your Site
 
 Once the installation is successful, you can continue to add your own
 SODAR based apps. See
-`SODAR Core documentation <https://cubi-gitlab.bihealth.org/CUBI_Engineering/CUBI_Data_Mgmt/sodar_core/tree/v0.4.0/docs/source>`_.
+`SODAR Core documentation <https://github.com/bihealth/sodar_core/tree/v0.4.1/docs>`_.
 for further instructions.
