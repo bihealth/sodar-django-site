@@ -27,7 +27,7 @@ It is also readily compatible with Selenium UI testing, coverage checking and
 continuous integration for Travis-CI and GitLab-CI.
 
 The current version of this site is compatible with
-`SODAR Core v0.4.1 <https://github.com/bihealth/sodar_core/tree/v0.4.1>`_.
+`SODAR Core v0.4.2 <https://github.com/bihealth/sodar_core/tree/v0.4.2>`_.
 
 
 Installation for Development
@@ -38,7 +38,7 @@ For instructions and best practices in Django development, see
 `Two Scoops of Django <https://twoscoopspress.com/products/two-scoops-of-django-1-11>`_.
 
 For SODAR Core concepts and instructions, see
-`SODAR Core documentation <https://github.com/bihealth/sodar_core/tree/v0.4.1/docs>`_.
+`SODAR Core documentation <https://github.com/bihealth/sodar_core/tree/v0.4.2/docs>`_.
 
 The examples here use virtualenv and pip, but you may also use e.g. conda for
 virtual environments and installing packages.
@@ -143,5 +143,5 @@ Developing your Site
 
 Once the installation is successful, you can continue to add your own
 SODAR based apps. See
-`SODAR Core documentation <https://github.com/bihealth/sodar_core/tree/v0.4.1/docs>`_.
+`SODAR Core documentation <https://github.com/bihealth/sodar_core/tree/v0.4.2/docs>`_.
 for further instructions.

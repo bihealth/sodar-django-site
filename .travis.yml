@@ -34,3 +34,5 @@ before_script:
 script:
   - python manage.py collectstatic --noinput
   - python manage.py test -v 2 --settings=config.settings.test
+  - ./black.sh --check
+  - flake8 .
