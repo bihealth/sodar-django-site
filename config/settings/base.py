@@ -55,6 +55,10 @@ THIRD_PARTY_APPS = [
     'knox',  # For token auth
     'docs',  # For the online user documentation/manual
     'db_file_storage',  # For filesfolders
+    'dal',  # For user search combo box
+    'dal_select2',
+    # TODO: Add other third party apps here
+
     # SODAR Projectroles app
     'projectroles.apps.ProjectrolesConfig',
     # SODAR Timeline app
@@ -70,7 +74,6 @@ THIRD_PARTY_APPS = [
     # SODAR Taskflow backend app
     # NOTE: Only enable if using sodar_taskflow
     # 'taskflowbackend.apps.TaskflowbackendConfig',
-    # TODO: Add other third party apps here
 ]
 
 # Project apps
@@ -461,7 +464,7 @@ PROJECTROLES_ENABLE_SEARCH = True
 # PROJECTROLES_HELP_HIGHLIGHT_DAYS = 7
 # PROJECTROLES_SEARCH_PAGINATION = 5
 # PROJECTROLES_HIDE_APP_LINKS = env.list('PROJECTROLES_HIDE_APP_LINKS', None, [])  # noqa
-
+# PROJECTROLES_DELEGATE_LIMIT = env.int('PROJECTROLES_DELEGATE_LIMIT', 1)
 
 # Timeline app settings
 TIMELINE_PAGINATION = 15
