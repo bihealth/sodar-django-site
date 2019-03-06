@@ -58,7 +58,6 @@ THIRD_PARTY_APPS = [
     'dal',  # For user search combo box
     'dal_select2',
     # TODO: Add other third party apps here
-
     # SODAR Projectroles app
     'projectroles.apps.ProjectrolesConfig',
     # SODAR Timeline app
