@@ -62,7 +62,7 @@ mistune==0.8.4
 django-autocomplete-light==3.2.10  # Higher versions are not compatible with django 1.11
 
 # Django-plugins (with Django 1.11 support)
--e git://github.com/mikkonie/django-plugins.git@1bc07181e6ab68b0f9ed3a00382eb1f6519e1009#egg=django-plugins
+-e git+https://github.com/mikkonie/django-plugins.git@1bc07181e6ab68b0f9ed3a00382eb1f6519e1009#egg=django-plugins
 
 # SODAR Core
--e git://github.com/bihealth/sodar_core.git@v0.4.5#egg=django-sodar-core
+-e git+https://github.com/bihealth/sodar_core.git@v0.5.0#egg=django-sodar-core
