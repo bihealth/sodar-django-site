@@ -81,3 +81,6 @@ flamegraph.pl
 # Certificate files
 *.crt
 *.pem
+
+# Celery
+celerybeat-schedule

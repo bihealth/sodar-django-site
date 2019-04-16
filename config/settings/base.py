@@ -75,7 +75,7 @@ THIRD_PARTY_APPS = [
     # 'taskflowbackend.apps.TaskflowbackendConfig',
     # SODAR Cache backend app
     # NOTE: Only enable if used in your site
-    # 'sodarcache.apps.SodarCacheConfig',
+    # 'sodarcache.apps.SodarcacheConfig',
 ]
 
 # Project apps
