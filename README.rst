@@ -1,8 +1,8 @@
 SODAR Django Site
 ^^^^^^^^^^^^^^^^^
 
-.. image:: https://travis-ci.com/bihealth/sodar_django_site.svg?token=BANPpQjiM3fGGTK4nz1z&branch=master
-    :target: https://travis-ci.com/bihealth/sodar_django_site
+.. image:: https://travis-ci.org/bihealth/sodar_django_site.svg?branch=master
+    :target: https://travis-ci.org/bihealth/sodar_django_site
 
 .. image:: https://img.shields.io/badge/License-MIT-yellow.svg
     :target: https://opensource.org/licenses/MIT
