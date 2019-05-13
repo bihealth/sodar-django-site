@@ -44,6 +44,8 @@ urlpatterns = [
     url(r'^user/', include('userprofile.urls')),
     # Admin Alerts URLs
     url(r'^alerts/', include('adminalerts.urls')),
+    # Site Info URLs
+    url(r'^siteinfo/', include('siteinfo.urls')),
     # TODO: Add URLs of your own apps here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
