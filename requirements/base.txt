@@ -2,7 +2,7 @@
 wheel==0.32.3
 
 # Conservative Django
-django==1.11.20 # pyup: <2.0
+django==1.11.21 # pyup: <2.0
 
 # Configuration
 django-environ==0.4.5
@@ -65,4 +65,4 @@ django-autocomplete-light==3.2.10  # Higher versions are not compatible with dja
 -e git+https://github.com/mikkonie/django-plugins.git@1bc07181e6ab68b0f9ed3a00382eb1f6519e1009#egg=django-plugins
 
 # SODAR Core
--e git+https://github.com/bihealth/sodar_core.git@v0.6.1#egg=django-sodar-core
+-e git+https://github.com/bihealth/sodar_core.git@v0.6.2#egg=django-sodar-core
