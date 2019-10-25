@@ -64,22 +64,22 @@ First you need to install OS dependencies, PostgreSQL 9.6 and Python3.6.
 Database Setup
 --------------
 
-Create a PostgreSQL user and a database for your application. In the example,
-we use ``sodar_core`` for the database, user name and password. Make sure to
+Create a PostgreSQL user and a database for your application. Make sure to
 give the user the permission to create further PostgreSQL databases (used for
 testing).
 
 You can either use the helper script in ``utility/setup_database.sh`` or use
-psql manually.
+psql manually. Make sure to replace the example values below with your actual
+database name, user name and password.
 
 .. code-block:: console
 
     $ sudo su - postgres
     $ psql
-    $ CREATE DATABASE sodar_core;
-    $ CREATE USER sodar_core WITH PASSWORD 'sodar_core';
-    $ GRANT ALL PRIVILEGES ON DATABASE sodar_core to sodar_core;
-    $ ALTER USER sodar_core CREATEDB;
+    $ CREATE DATABASE your_db;
+    $ CREATE USER your_user WITH PASSWORD 'your_password';
+    $ GRANT ALL PRIVILEGES ON DATABASE your_db to your_user;
+    $ ALTER USER your_user CREATEDB;
     $ \q
 
 You have to add the credentials in the environment variable ``DATABASE_URL``.
@@ -89,7 +89,7 @@ set ``DJANGO_READ_DOT_ENV_FILE=1`` in your actual environment. See
 
 .. code-block:: console
 
-    $ export DATABASE_URL='postgres://sodar_core:sodar_core@127.0.0.1/sodar_core'
+    DATABASE_URL=postgres://your_user:your_password@127.0.0.1/your_db
 
 Project Setup
 -------------
@@ -99,12 +99,16 @@ the environment, install Python requirements for the project:
 
 .. code-block:: console
 
-    $ git clone git+https://github.com/bihealth/sodar_core.git
-    $ cd sodar_core
+    $ git clone git+https://github.com/bihealth/sodar_django_site.git
+    $ cd sodar_django_site
     $ pip install virtualenv
     $ virtualenv -p python3.6 .venv
     $ source .venv/bin/activate
     $ utility/install_python_dependencies.sh
+
+**Hint:** At this point, you most likely want to rename the project and the
+website directory from ``sodar_django_site`` into the name of the system you
+will be developing.
 
 LDAP Setup (Optional)
 ---------------------
@@ -125,7 +129,7 @@ Initialize the database (this will also synchronize django-plugins):
 
     $ ./manage.py migrate
 
-Create a Django superuser for the example_site:
+Create a Django superuser for the web site:
 
 .. code-block:: console
 
