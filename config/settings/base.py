@@ -402,7 +402,7 @@ def set_logging(debug):
             'projectroles': {
                 'level': 'DEBUG' if debug else 'INFO',
                 'handlers': ['console'],
-                'propagate': False,
+                'propagate': True,
             }
         },
     }
@@ -438,7 +438,7 @@ ENABLED_BACKEND_PLUGINS = env.list(
 # SODAR API settings
 SODAR_API_DEFAULT_VERSION = '0.1'
 SODAR_API_ALLOWED_VERSIONS = [SODAR_API_DEFAULT_VERSION]
-SODAR_API_MEDIA_TYPE = 'application/vnd.bihealth.sodar-core+json'
+SODAR_API_MEDIA_TYPE = 'application/your.application+json'
 SODAR_API_DEFAULT_HOST = env.url(
     'SODAR_API_DEFAULT_HOST', 'http://0.0.0.0:8000'
 )
@@ -466,6 +466,9 @@ PROJECTROLES_DISABLE_CATEGORIES = env.bool(
 )
 PROJECTROLES_INVITE_EXPIRY_DAYS = env.int('PROJECTROLES_INVITE_EXPIRY_DAYS', 14)
 PROJECTROLES_SEND_EMAIL = env.bool('PROJECTROLES_SEND_EMAIL', False)
+PROJECTROLES_EMAIL_SENDER_REPLY = env.bool(
+    'PROJECTROLES_EMAIL_SENDER_REPLY', False
+)
 PROJECTROLES_ENABLE_SEARCH = True
 
 # Optional projectroles settings

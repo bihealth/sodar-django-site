@@ -50,6 +50,9 @@ INSTALLED_APPS += ['gunicorn']
 # ------------------------
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# Add optonal custom directory for static includes at deployment stage
+# STATICFILES_DIRS += env.list('CUSTOM_STATIC_DIR', default=[])
+
 # TEMPLATE CONFIGURATION
 # ------------------------------------------------------------------------------
 TEMPLATES[0]['OPTIONS']['loaders'] = [
@@ -95,13 +98,13 @@ LOGGING = set_logging(DEBUG)
 LOGGING['loggers']['django.db.backends'] = {
     'level': 'ERROR',
     'handlers': ['console'],
-    'propagate': False,
+    'propagate': True,
 }
 
 LOGGING['loggers']['django.security.DisallowedHost'] = {
     'level': 'ERROR',
     'handlers': ['console'],
-    'propagate': False,
+    'propagate': True,
 }
 
 
