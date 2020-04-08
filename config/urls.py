@@ -46,6 +46,8 @@ urlpatterns = [
     url(r'^alerts/', include('adminalerts.urls')),
     # Site Info URLs
     url(r'^siteinfo/', include('siteinfo.urls')),
+    # API Tokens URLs
+    url(r'^tokens/', include('tokens.urls')),
     # TODO: Add URLs of your own apps here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

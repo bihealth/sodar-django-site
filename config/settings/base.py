@@ -72,6 +72,8 @@ THIRD_PARTY_APPS = [
     'adminalerts.apps.AdminalertsConfig',
     # Site Info site app
     'siteinfo.apps.SiteinfoConfig',
+    # API Tokens site app
+    'tokens.apps.TokensConfig',
     # SODAR Taskflow backend app
     # NOTE: Only enable if using sodar_taskflow
     # 'taskflowbackend.apps.TaskflowbackendConfig',

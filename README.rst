@@ -27,7 +27,7 @@ It is also readily compatible with Selenium UI testing, coverage checking and
 continuous integration for Travis-CI and GitLab-CI.
 
 The current version of this site is compatible with
-`SODAR Core v0.7.2 <https://github.com/bihealth/sodar_core/tree/v0.7.2>`_.
+`SODAR Core v0.8.0 <https://github.com/bihealth/sodar_core/tree/v0.8.0>`_.
 
 
 Installation for Development
