@@ -17,7 +17,7 @@ Introduction
 
 The site is based on one created by the last Django 1.11 release of
 `cookiecutter-django <https://github.com/pydanny/cookiecutter-django/tree/1.11.10>`_.
-That project has since moved on to Django 2.x which is not yet supported by
+That project has since moved on to Django 3.x which is not yet supported by
 SODAR Core. This template site remains in 1.11, while updating base requirements
 and omitting things not relevant to SODAR Core based sites.
 
@@ -27,7 +27,7 @@ It is also readily compatible with Selenium UI testing, coverage checking and
 continuous integration for Travis-CI and GitLab-CI.
 
 The current version of this site is compatible with
-`SODAR Core v0.8.2 <https://github.com/bihealth/sodar_core/tree/v0.8.2>`_.
+`SODAR Core v0.8.3 <https://github.com/bihealth/sodar_core/tree/v0.8.3>`_.
 
 
 Installation for Development
@@ -99,7 +99,7 @@ the environment, install Python requirements for the project:
 
 .. code-block:: console
 
-    $ git clone git+https://github.com/bihealth/sodar_django_site.git
+    $ git clone https://github.com/bihealth/sodar_django_site.git
     $ cd sodar_django_site
     $ pip install virtualenv
     $ virtualenv -p python3.6 .venv

@@ -13,9 +13,6 @@ django-crispy-forms==1.7.2
 # Models
 django-model-utils==3.2.0
 
-# Images
-Pillow==7.0.0
-
 # Password storage
 argon2-cffi==19.2.0
 
@@ -65,4 +62,4 @@ django-autocomplete-light==3.2.10  # Higher versions are not compatible with dja
 -e git+https://github.com/mikkonie/django-plugins.git@1bc07181e6ab68b0f9ed3a00382eb1f6519e1009#egg=django-plugins
 
 # SODAR Core
--e git+https://github.com/bihealth/sodar_core.git@v0.8.2#egg=django-sodar-core
+-e git+https://github.com/bihealth/sodar_core.git@v0.8.3#egg=django-sodar-core
