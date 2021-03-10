@@ -1,8 +1,8 @@
 SODAR Django Site
 ^^^^^^^^^^^^^^^^^
 
-.. image:: https://travis-ci.org/bihealth/sodar_django_site.svg?branch=master
-    :target: https://travis-ci.org/bihealth/sodar_django_site
+.. image:: https://github.com/bihealth/sodar_django_site/workflows/build/badge.svg
+    :target: https://github.com/bihealth/sodar_django_site/actions?query=workflow%3ABuild
 
 .. image:: https://img.shields.io/badge/License-MIT-yellow.svg
     :target: https://opensource.org/licenses/MIT
@@ -27,7 +27,7 @@ It is also readily compatible with Selenium UI testing, coverage checking and
 continuous integration for Travis-CI and GitLab-CI.
 
 The current version of this site is compatible with
-`SODAR Core v0.8.3 <https://github.com/bihealth/sodar_core/tree/v0.8.3>`_.
+`SODAR Core v0.9.1 <https://github.com/bihealth/sodar_core/tree/v0.9.1>`_.
 
 
 Installation for Development
@@ -139,7 +139,7 @@ Now you should be able to run the server:
 
 .. code-block:: console
 
-    $ ./run.sh
+    $ make serve
 
 Navigate to `http://0.0.0.0:8000/ <http://0.0.0.0:8000/>`_ and log in to see the
 results. The site should be up and running with the default SODAR Core layout.
