@@ -1,7 +1,7 @@
 SODAR Django Site
 ^^^^^^^^^^^^^^^^^
 
-.. image:: https://github.com/bihealth/sodar_django_site/workflows/build/badge.svg
+.. image:: https://github.com/bihealth/sodar_django_site/workflows/Build/badge.svg
     :target: https://github.com/bihealth/sodar_django_site/actions?query=workflow%3ABuild
 
 .. image:: https://img.shields.io/badge/License-MIT-yellow.svg
