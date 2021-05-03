@@ -83,4 +83,8 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 
 # Plugin settings
-ENABLED_BACKEND_PLUGINS = ['timeline_backend', 'example_backend_app']
+ENABLED_BACKEND_PLUGINS = [
+    'appalerts_backend',
+    'sodar_cache',
+    'timeline_backend',
+]

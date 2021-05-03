@@ -70,7 +70,12 @@ LOGGING['handlers']['console']['level'] = 'CRITICAL'
 
 
 # Plugin settings
-ENABLED_BACKEND_PLUGINS = ['timeline_backend', 'example_backend_app']
+ENABLED_BACKEND_PLUGINS = [
+    'appalerts_backend',
+    'sodar_cache',
+    'timeline_backend',
+    'example_backend_app',
+]
 
 # Projectroles app settings
 PROJECTROLES_SITE_MODE = 'SOURCE'

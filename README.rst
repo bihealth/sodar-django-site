@@ -7,7 +7,7 @@ SODAR Django Site
 .. image:: https://img.shields.io/badge/License-MIT-yellow.svg
     :target: https://opensource.org/licenses/MIT
 
-This project contains a minimal `Django 1.11 <https://docs.djangoproject.com/en/1.11/>`_
+This project contains a minimal `Django 3.2 <https://docs.djangoproject.com/en/3.2/>`_
 site template for building `SODAR Core <https://github.com/bihealth/sodar_core>`_
 based projects.
 
@@ -15,45 +15,42 @@ based projects.
 Introduction
 ============
 
-The site is based on one created by the last Django 1.11 release of
-`cookiecutter-django <https://github.com/pydanny/cookiecutter-django/tree/1.11.10>`_.
-That project has since moved on to Django 3.x which is not yet supported by
-SODAR Core. This template site remains in 1.11, while updating base requirements
-and omitting things not relevant to SODAR Core based sites.
+The site is based on a site template created with
+`cookiecutter-django <https://github.com/pydanny/cookiecutter-django/>`_.
 
 Included in this project are the critical OS and Python requirements, pre-set
 Django settings, a pre-installed SODAR Core framework and some helper scripts.
 It is also readily compatible with Selenium UI testing, coverage checking and
-continuous integration for Travis-CI and GitLab-CI.
+continuous integration for GitHub Actions and GitLab-CI.
 
 The current version of this site is compatible with
-`SODAR Core v0.9.1 <https://github.com/bihealth/sodar_core/tree/v0.9.1>`_.
+`SODAR Core v0.10.0 <https://github.com/bihealth/sodar_core/tree/v0.10.0>`_.
 
 
 Installation for Development
 ============================
 
 For instructions and best practices in Django development, see
-`Django 1.11 documentation <https://docs.djangoproject.com/en/1.11/>`_ and
+`Django 3.2 documentation <https://docs.djangoproject.com/en/3.2/>`_ and
 `Two Scoops of Django <https://twoscoopspress.com/products/two-scoops-of-django-1-11>`_.
 
 For SODAR Core concepts and instructions, see
 `SODAR Core documentation <https://sodar-core.readthedocs.io/>`_.
 
-The examples here use virtualenv and pip, but you may also use e.g. conda for
-virtual environments and installing packages.
+The examples here use venv and pip, but you may also use e.g. conda for virtual
+environments and installing packages.
 
 Requirements
 ------------
 
-- Ubuntu 16.04 Xenial (Recommended, Centos 7 and newer Ubuntu versions may work)
-- Python 3.6
+- Ubuntu 20.04 Xenial (Recommended for development)
+- Python 3.7+ (3.8 recommended)
 - Postgres 9.6+
 
 System Installation
 -------------------
 
-First you need to install OS dependencies, PostgreSQL 9.6 and Python3.6.
+First you need to install OS dependencies, PostgreSQL 9.6 and Python3.8.
 
 .. code-block:: console
 
@@ -101,8 +98,7 @@ the environment, install Python requirements for the project:
 
     $ git clone https://github.com/bihealth/sodar_django_site.git
     $ cd sodar_django_site
-    $ pip install virtualenv
-    $ virtualenv -p python3.6 .venv
+    $ python -m venv .venv
     $ source .venv/bin/activate
     $ utility/install_python_dependencies.sh
 
@@ -135,14 +131,22 @@ Create a Django superuser for the web site:
 
     $ ./manage.py createsuperuser
 
+Retrieve icons to use on the site and collect static files:
+
+.. code-block:: console
+
+    $ ./manage.py geticons
+    $ ./manage.py collectstatic
+
 Now you should be able to run the server:
 
 .. code-block:: console
 
     $ make serve
 
-Navigate to `http://0.0.0.0:8000/ <http://0.0.0.0:8000/>`_ and log in to see the
-results. The site should be up and running with the default SODAR Core layout.
+Navigate to `http://127.0.0.1:8000/ <http://127.0.0.1:8000/>`_ and log in to see
+the results. The site should be up and running with the default SODAR Core
+layout.
 
 Note that if you are utilizing Celery or the bgjobs app, you will also need to
 configure and run Celery in a separate process.

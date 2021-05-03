@@ -2,12 +2,14 @@
 Django settings for the SODAR Django Site template.
 
 For more information on this file, see
-https://docs.djangoproject.com/en/dev/topics/settings/
+https://docs.djangoproject.com/en/3.2/topics/settings/
 
 For the full list of settings and their values, see
-https://docs.djangoproject.com/en/dev/ref/settings/
+https://docs.djangoproject.com/en/3.2/ref/settings/
+
 """
 import environ
+import os
 
 SITE_PACKAGE = 'sodar_django_site'
 
@@ -57,6 +59,7 @@ THIRD_PARTY_APPS = [
     'db_file_storage',  # For filesfolders
     'dal',  # For user search combo box
     'dal_select2',
+    'dj_iconify.apps.DjIconifyConfig',  # Iconify for SVG icons
     # TODO: Add other third party apps here
     # SODAR Projectroles app
     'projectroles.apps.ProjectrolesConfig',
@@ -70,6 +73,8 @@ THIRD_PARTY_APPS = [
     'userprofile.apps.UserprofileConfig',
     # Admin Alerts site app
     'adminalerts.apps.AdminalertsConfig',
+    # App Alerts site app
+    'appalerts.apps.AppalertsConfig',
     # Site Info site app
     'siteinfo.apps.SiteinfoConfig',
     # API Tokens site app
@@ -142,6 +147,9 @@ DATABASES = {
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = False
 
+# Set default auto field (for Django 3.2+)
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 # Set django-db-file-storage as the default storage (for filesfolders)
 DEFAULT_FILE_STORAGE = 'db_file_storage.storage.DatabaseFileStorage'
 
@@ -193,6 +201,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # Site context processors
                 'projectroles.context_processors.urls_processor',
+                'projectroles.context_processors.site_app_processor',
+                'projectroles.context_processors.app_alerts_processor',
             ],
         },
     }
@@ -211,6 +221,9 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
+
+# Iconify SVG icons
+ICONIFY_JSON_ROOT = os.path.join(STATIC_ROOT, 'iconify')
 
 # MEDIA CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -502,6 +515,8 @@ ENABLED_BACKEND_PLUGINS = env.list(
     'ENABLED_BACKEND_PLUGINS',
     None,
     [
+        'appalerts_backend',
+        'sodar_cache',
         'timeline_backend',
         # TODO: add your backend plugins here
     ],
@@ -532,6 +547,9 @@ PROJECTROLES_ALLOW_LOCAL_USERS = env.bool(
     'PROJECTROLES_ALLOW_LOCAL_USERS', False
 )
 
+# Allow unauthenticated users to access public projects if set true
+PROJECTROLES_ALLOW_ANONYMOUS = env.bool('PROJECTROLES_ALLOW_ANONYMOUS', False)
+
 # General projectroles settings
 PROJECTROLES_DISABLE_CATEGORIES = env.bool(
     'PROJECTROLES_DISABLE_CATEGORIES', False
@@ -541,7 +559,7 @@ PROJECTROLES_SEND_EMAIL = env.bool('PROJECTROLES_SEND_EMAIL', False)
 PROJECTROLES_EMAIL_SENDER_REPLY = env.bool(
     'PROJECTROLES_EMAIL_SENDER_REPLY', False
 )
-PROJECTROLES_ENABLE_SEARCH = True
+PROJECTROLES_ENABLE_SEARCH = env.bool('PROJECTROLES_ENABLE_SEARCH', True)
 
 # Inline HTML include to the head element of the base site template
 PROJECTROLES_INLINE_HEAD_INCLUDE = env.str(
@@ -558,7 +576,7 @@ PROJECTROLES_INLINE_HEAD_INCLUDE = env.str(
 # PROJECTROLES_KIOSK_MODE = env.bool('PROJECTROLES_KIOSK_MODE', False)
 
 # Warn about unsupported browsers (IE)
-# PROJECTROLES_BROWSER_WARNING = True
+# PROJECTROLES_BROWSER_WARNING = env.bool('PROJECTROLES_BROWSER_WARNING', True)
 
 # Disable default CDN JS/CSS includes to replace with your local files
 # PROJECTROLES_DISABLE_CDN_INCLUDES = env.bool(
@@ -579,7 +597,7 @@ BGJOBS_PAGINATION = env.int('BGJOBS_PAGINATION', 15)
 
 
 # Timeline app settings
-TIMELINE_PAGINATION = 15
+TIMELINE_PAGINATION = env.int('TIMELINE_PAGINATION', 15)
 
 
 # Filesfolders app settings
@@ -587,12 +605,20 @@ FILESFOLDERS_MAX_UPLOAD_SIZE = env.int('FILESFOLDERS_MAX_UPLOAD_SIZE', 10485760)
 FILESFOLDERS_MAX_ARCHIVE_SIZE = env.int(
     'FILESFOLDERS_MAX_ARCHIVE_SIZE', 52428800
 )
-FILESFOLDERS_SERVE_AS_ATTACHMENT = False
-FILESFOLDERS_LINK_BAD_REQUEST_MSG = 'Invalid request'
+FILESFOLDERS_SERVE_AS_ATTACHMENT = env.bool(
+    'FILESFOLDERS_SERVE_AS_ATTACHMENT', False
+)
+FILESFOLDERS_LINK_BAD_REQUEST_MSG = env.str(
+    'FILESFOLDERS_LINK_BAD_REQUEST_MSG', 'Invalid request'
+)
+# Custom project list column example
+FILESFOLDERS_SHOW_LIST_COLUMNS = env.bool(
+    'FILESFOLDERS_SHOW_LIST_COLUMNS', False
+)
 
 
 # Adminalerts app settings
-ADMINALERTS_PAGINATION = 15
+ADMINALERTS_PAGINATION = env.int('ADMINALERTS_PAGINATION', 15)
 
 
 # Taskflow backend settings

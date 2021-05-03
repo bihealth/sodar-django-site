@@ -1,17 +1,17 @@
 # Wheel
-wheel==0.34.2
+wheel==0.36.2
 
-# Conservative Django
-django==1.11.29, <2.0
+# Django
+django==3.2
 
 # Configuration
 django-environ==0.4.5
 
 # Forms
-django-crispy-forms==1.7.2
+django-crispy-forms==1.11.1
 
 # Models
-django-model-utils==3.2.0
+django-model-utils==4.1.1
 
 # Password storage
 argon2-cffi==20.1.0
@@ -23,13 +23,13 @@ psycopg2-binary==2.8.6
 awesome-slugify==1.6.5
 
 # Time zones support
-pytz==2020.5
+pytz==2021.1
 
 # Versioning
 versioneer==0.19
 
 # Online documentation via django-docs.
-Sphinx==3.4.3
+Sphinx==3.5.1
 django-docs==0.3.1
 sphinx-rtd-theme==0.5.1
 
@@ -41,7 +41,7 @@ sphinx-rtd-theme==0.5.1
 rules==2.2
 
 # REST framework
-djangorestframework==3.11.2
+djangorestframework==3.12.2
 
 # Keyed list addon for DRF
 -e git+https://github.com/mikkonie/drf-keyed-list.git@b03607b866c5706b0e1ea46a7eeaab6527030734#egg=drf-keyed-list
@@ -50,23 +50,22 @@ djangorestframework==3.11.2
 django-rest-knox==4.1.0
 
 # Markdown field support
-markdown==3.3.3
-django-markupfield==1.5.1
-django-pagedown==1.0.6
+markdown==3.3.4
+django-markupfield==2.0.0
+django-pagedown==2.2.0
 mistune==0.8.4
 
 # Database file storage for filesfolders
 django-db-file-storage==0.5.5
 
 # Django autocomplete light (DAL)
-django-autocomplete-light==3.2.10  # Higher versions are not compatible with django 1.11
+django-autocomplete-light==3.8.2  # Higher versions are not compatible with django 1.11
 
 # SAML2 support for SSO
 django-saml2-auth-ai>=2.1.6, <2.2
 
-# Django-plugins (with Django 1.11 support)
--e git+https://github.com/mikkonie/django-plugins.git@1bc07181e6ab68b0f9ed3a00382eb1f6519e1009#egg=django-plugins
+# Django-plugins (with Django v3.0+ support)
+-e git+https://github.com/mikkonie/django-plugins.git@42e86e7904e5c09f1da32173862b26843eda5dd8#egg=django-plugins
 
 # SODAR Core
--e git+https://github.com/bihealth/sodar_core.git@v0.9.1#egg=django-sodar-core
-
+-e git+https://github.com/bihealth/sodar_core.git@v0.10.0#egg=django-sodar-core

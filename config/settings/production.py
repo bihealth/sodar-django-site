@@ -125,7 +125,3 @@ EMAIL_HOST_PASSWORD = EMAIL_URL['EMAIL_HOST_PASSWORD']
 
 # Local App Settings
 # ------------------------------------------------------------------------------
-
-
-# Plugin settings
-ENABLED_BACKEND_PLUGINS = ['timeline_backend', 'taskflow']

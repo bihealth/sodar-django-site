@@ -1,1 +1,2 @@
 projectroles/_version.py export-subst
+sodar_django_site/_version.py export-subst
