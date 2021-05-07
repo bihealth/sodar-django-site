@@ -43,7 +43,7 @@ urlpatterns = [
     # Background Jobs URLs
     url(r'^bgjobs/', include('bgjobs.urls')),
     # Data Cache app
-    # url(r'^cache/', include('sodarcache.urls')),
+    url(r'^cache/', include('sodarcache.urls')),
     # User Profile URLs
     url(r'^user/', include('userprofile.urls')),
     # Admin Alerts URLs

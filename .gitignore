@@ -2,6 +2,10 @@
 src/
 *.egg-info/
 
+# Built distribution files
+build/
+dist/
+
 ### Documentation ###
 /docs*/build/
 
@@ -9,14 +13,17 @@ src/
 .venv/
 venv/
 
-# Built distribution files
-build/
-dist/
-
 ### OSX ###
 .DS_Store
 .AppleDouble
 .LSOverride
+
+# Pycharm
+.idea/*
+docs/pycharm/*
+
+# Vscode
+.vscode/*
 
 ### SublimeText ###
 # cache files for sublime text
@@ -55,10 +62,6 @@ coverage.xml
 *.mo
 *.pot
 
-# Pycharm
-.idea/*
-docs/pycharm/*
-
 # Vim
 
 *~
@@ -96,6 +99,3 @@ flamegraph.pl
 
 # Celery
 celerybeat-schedule
-
-# Vscode
-.vscode/*

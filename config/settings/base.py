@@ -79,12 +79,11 @@ THIRD_PARTY_APPS = [
     'siteinfo.apps.SiteinfoConfig',
     # API Tokens site app
     'tokens.apps.TokensConfig',
+    # SODAR Cache backend app
+    'sodarcache.apps.SodarcacheConfig',
     # SODAR Taskflow backend app
     # NOTE: Only enable if using sodar_taskflow
     # 'taskflowbackend.apps.TaskflowbackendConfig',
-    # SODAR Cache backend app
-    # NOTE: Only enable if used in your site
-    # 'sodarcache.apps.SodarcacheConfig',
 ]
 
 # Project apps
@@ -619,6 +618,10 @@ FILESFOLDERS_SHOW_LIST_COLUMNS = env.bool(
 
 # Adminalerts app settings
 ADMINALERTS_PAGINATION = env.int('ADMINALERTS_PAGINATION', 15)
+
+
+# Appalerts app settings
+APPALERTS_STATUS_INTERVAL = env.int('APPALERTS_STATUS_INTERVAL', 5)
 
 
 # Taskflow backend settings
