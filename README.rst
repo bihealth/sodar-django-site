@@ -24,7 +24,7 @@ It is also readily compatible with Selenium UI testing, coverage checking and
 continuous integration for GitHub Actions and GitLab-CI.
 
 The current version of this site is compatible with
-`SODAR Core v0.10.1 <https://github.com/bihealth/sodar_core/tree/v0.10.1>`_.
+`SODAR Core v0.10.2 <https://github.com/bihealth/sodar_core/tree/v0.10.2>`_.
 
 
 Installation for Development
@@ -32,7 +32,7 @@ Installation for Development
 
 For instructions and best practices in Django development, see
 `Django 3.2 documentation <https://docs.djangoproject.com/en/3.2/>`_ and
-`Two Scoops of Django <https://twoscoopspress.com/products/two-scoops-of-django-1-11>`_.
+`Two Scoops of Django <https://www.feldroy.com/collections/everything/products/two-scoops-of-django-3-x>`_.
 
 For SODAR Core concepts and instructions, see
 `SODAR Core documentation <https://sodar-core.readthedocs.io/>`_.
