@@ -2,7 +2,7 @@
 wheel==0.36.2
 
 # Django
-django==3.2.4
+django==3.2.5
 
 # Configuration
 django-environ==0.4.5
@@ -31,7 +31,7 @@ versioneer==0.19
 # Online documentation via django-docs.
 Sphinx==4.0.2
 django-docs==0.3.1
-sphinx-rtd-theme==0.5.1
+sphinx-rtd-theme==0.5.2
 
 #####################
 # SODAR Core imports
@@ -68,6 +68,6 @@ django-saml2-auth-ai>=2.1.6, <2.2
 -e git+https://github.com/mikkonie/django-plugins.git@42e86e7904e5c09f1da32173862b26843eda5dd8#egg=django-plugins
 
 # SODAR Core
-# django-sodar-core==0.10.1
+django-sodar-core==0.10.3
 # Use below for develop installs with a commit ID
--e git+https://github.com/bihealth/sodar_core.git@0b90113e0e3bad42a6d9c2a2d604dc11ad930765#egg=django-sodar-core
+# -e git+https://github.com/bihealth/sodar_core.git@0b90113e0e3bad42a6d9c2a2d604dc11ad930765#egg=django-sodar-core
