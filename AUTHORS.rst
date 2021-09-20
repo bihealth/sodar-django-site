@@ -1,4 +1,4 @@
 Credits
 =======
 
-* Mikko Nieminen <mikko.nieminen@bihealth.de>
+* Mikko Nieminen <mikko.nieminen@bih-charite.de>
