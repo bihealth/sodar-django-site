@@ -93,24 +93,20 @@ CACHES = {
 # Logging
 # ------------------------------------------------------------------------------
 
-LOGGING = set_logging(DEBUG)
-
-LOGGING['loggers']['django.db.backends'] = {
-    'level': 'ERROR',
-    'handlers': ['console'],
-    'propagate': True,
-}
-
-LOGGING['loggers']['django.security.DisallowedHost'] = {
-    'level': 'ERROR',
-    'handlers': ['console'],
-    'propagate': True,
-}
-
-
-# Custom Admin URL, use {% url 'admin:index' %}
-ADMIN_URL = env('DJANGO_ADMIN_URL', default='admin')
-
+LOGGING_LEVEL = env.str('LOGGING_LEVEL', 'ERROR')
+LOGGING_APPS = env.list(
+    'LOGGING_APPS',
+    default=[
+        'django',
+        'django.requests',
+        'projectroles',
+        'siteinfo',
+        'sodarcache',
+        'taskflowbackend',
+        'timeline',
+    ],
+)
+LOGGING = set_logging(LOGGING_LEVEL)
 
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------

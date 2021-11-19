@@ -473,6 +473,8 @@ SAML2_AUTH = {
 # Logging
 # ------------------------------------------------------------------------------
 
+# Custom logging level
+LOGGING_LEVEL = env.str('LOGGING_LEVEL', 'DEBUG' if DEBUG else 'ERROR')
 
 # List of apps to include in logging
 LOGGING_APPS = env.list(
@@ -482,6 +484,7 @@ LOGGING_APPS = env.list(
         'siteinfo',
         'sodarcache',
         'taskflowbackend',
+        'timeline',
     ],
 )
 
@@ -489,9 +492,9 @@ LOGGING_APPS = env.list(
 LOGGING_FILE_PATH = env.str('LOGGING_FILE_PATH', None)
 
 
-def set_logging(debug, level=None):
+def set_logging(level=None):
     if not level:
-        level = 'DEBUG' if debug else 'ERROR'
+        level = 'DEBUG' if DEBUG else 'ERROR'
     app_logger_config = {
         'level': level,
         'handlers': ['console', 'file'] if LOGGING_FILE_PATH else ['console'],
@@ -524,7 +527,7 @@ def set_logging(debug, level=None):
     }
 
 
-LOGGING = set_logging(DEBUG)
+LOGGING = set_logging(LOGGING_LEVEL)
 
 
 # General site settings
@@ -594,12 +597,17 @@ PROJECTROLES_EMAIL_SENDER_REPLY = env.bool(
 PROJECTROLES_EMAIL_HEADER = env.str('PROJECTROLES_EMAIL_HEADER', None)
 PROJECTROLES_EMAIL_FOOTER = env.str('PROJECTROLES_EMAIL_FOOTER', None)
 
-PROJECTROLES_ENABLE_SEARCH = env.bool('PROJECTROLES_ENABLE_SEARCH', True)
-
 # Inline HTML include to the head element of the base site template
 PROJECTROLES_INLINE_HEAD_INCLUDE = env.str(
     'PROJECTROLES_INLINE_HEAD_INCLUDE', None
 )
+
+PROJECTROLES_ENABLE_SEARCH = env.bool('PROJECTROLES_ENABLE_SEARCH', True)
+
+# Enable profiling for debugging/analysis
+PROJECTROLES_ENABLE_PROFILING = env.bool('PROJECTROLES_ENABLE_PROFILING', False)
+if PROJECTROLES_ENABLE_PROFILING:
+    MIDDLEWARE += ['projectroles.middleware.ProfilerMiddleware']
 
 # Optional projectroles settings
 # PROJECTROLES_SECRET_LENGTH = 32
