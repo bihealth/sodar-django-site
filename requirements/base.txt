@@ -1,38 +1,38 @@
 # Wheel
-wheel==0.36.2
+wheel==0.37.1
 
 # Django
-django>=3.2.10, <3.3
+django>=3.2.12, <3.3
 
 # Configuration
-django-environ==0.4.5
+django-environ>=0.8.1, <0.9
 
 # Forms
-django-crispy-forms==1.11.2
+django-crispy-forms>=1.13.0, <1.14
 
 # Models
-django-model-utils==4.1.1
+django-model-utils>=4.2.0, <4.3
 
 # Password storage
-argon2-cffi==20.1.0
+argon2-cffi>=21.3.0, <21.4
 
 # Python-PostgreSQL Database Adapter
-psycopg2-binary==2.8.6
+psycopg2-binary>=2.9.3, <2.10
 
 # Unicode slugification
 awesome-slugify==1.6.5
 
 # Time zones support
-pytz==2021.1
+pytz==2021.3
 
 # Versioning
-versioneer==0.19
+versioneer==0.21
 
 # Online documentation via django-docs
-docutils>=0.16, <0.17  # 0.17 currently breaks sphinx-rtd-theme
-Sphinx==4.0.2
+docutils==0.17.1
+Sphinx==4.3.2
 django-docs==0.3.1
-sphinx-rtd-theme==0.5.2
+sphinx-rtd-theme==1.0.0
 
 #####################
 # SODAR Core imports
@@ -42,7 +42,7 @@ sphinx-rtd-theme==0.5.2
 rules==3.0
 
 # REST framework
-djangorestframework==3.12.4
+djangorestframework==3.13.1
 
 # Keyed list addon for DRF
 -e git+https://github.com/mikkonie/drf-keyed-list.git@b03607b866c5706b0e1ea46a7eeaab6527030734#egg=drf-keyed-list
@@ -52,9 +52,9 @@ django-rest-knox==4.1.0
 
 # Markdown field support
 markdown==3.3.4
-django-markupfield==2.0.0
-django-pagedown==2.2.0
-mistune==0.8.4
+django-markupfield>=2.0.1, <2.1
+django-pagedown>=2.2.1, <2.3
+mistune>=2.0.1, <2.1
 
 # Database file storage for filesfolders
 django-db-file-storage==0.5.5
@@ -69,6 +69,6 @@ django-saml2-auth-ai>=2.1.6, <2.2
 -e git+https://github.com/mikkonie/django-plugins.git@42e86e7904e5c09f1da32173862b26843eda5dd8#egg=django-plugins
 
 # SODAR Core
-django-sodar-core==0.10.7
+django-sodar-core==0.10.8
 # Use below for develop installs with a commit ID
 # -e git+https://github.com/bihealth/sodar_core.git@0b90113e0e3bad42a6d9c2a2d604dc11ad930765#egg=django-sodar-core
