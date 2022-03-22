@@ -610,6 +610,8 @@ if PROJECTROLES_ENABLE_PROFILING:
     MIDDLEWARE += ['projectroles.middleware.ProfilerMiddleware']
 
 # Optional projectroles settings
+# Sidebar icon size. Minimum=18, maximum=42
+# PROJECTROLES_SIDEBAR_ICON_SIZE = env.int('PROJECTROLES_SIDEBAR_ICON_SIZE', 36)
 # PROJECTROLES_SECRET_LENGTH = 32
 # PROJECTROLES_HELP_HIGHLIGHT_DAYS = 7
 # PROJECTROLES_SEARCH_PAGINATION = 5
