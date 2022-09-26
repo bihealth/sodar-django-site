@@ -39,7 +39,6 @@ SECURE_BROWSER_XSS_FILTER = True
 SESSION_COOKIE_SECURE = True
 SESSION_COOKIE_HTTPONLY = True
 SECURE_SSL_REDIRECT = env.bool('DJANGO_SECURE_SSL_REDIRECT', default=True)
-SECURE_REDIRECT_EXEMPT = ['/taskflow/']
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 X_FRAME_OPTIONS = 'DENY'
@@ -102,7 +101,6 @@ LOGGING_APPS = env.list(
         'projectroles',
         'siteinfo',
         'sodarcache',
-        'taskflowbackend',
         'timeline',
     ],
 )

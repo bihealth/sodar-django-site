@@ -24,7 +24,7 @@ It is also readily compatible with Selenium UI testing, coverage checking and
 continuous integration for GitHub Actions and GitLab-CI.
 
 The current version of this site is compatible with
-`SODAR Core v0.10.13 <https://github.com/bihealth/sodar_core/tree/v0.10.13>`_.
+`SODAR Core v0.11.0 <https://github.com/bihealth/sodar_core/tree/v0.11.0>`_.
 
 
 Installation for Development
@@ -45,7 +45,7 @@ Requirements
 
 - Ubuntu 20.04 Xenial (Recommended for development)
 - Python 3.8+
-- Postgres 9.6+
+- Postgres 11+
 
 System Installation
 -------------------
