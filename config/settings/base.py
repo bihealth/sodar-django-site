@@ -621,6 +621,8 @@ if PROJECTROLES_ENABLE_PROFILING:
 # PROJECTROLES_DELEGATE_LIMIT = env.int('PROJECTROLES_DELEGATE_LIMIT', 1)
 # Support for viewing the site in "kiosk mode" (under work, experimental)
 # PROJECTROLES_KIOSK_MODE = env.bool('PROJECTROLES_KIOSK_MODE', False)
+# Scroll project navigation with page content if set False
+# PROJECTROLES_BREADCRUMB_STICKY = True
 
 # Warn about unsupported browsers (IE)
 # PROJECTROLES_BROWSER_WARNING = env.bool('PROJECTROLES_BROWSER_WARNING', True)
