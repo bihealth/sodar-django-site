@@ -24,7 +24,7 @@ It is also readily compatible with Selenium UI testing, coverage checking and
 continuous integration for GitHub Actions and GitLab-CI.
 
 The current version of this site is compatible with
-`SODAR Core v0.12.0 <https://github.com/bihealth/sodar_core/tree/v0.12.0>`_.
+`SODAR Core v0.13.0 <https://github.com/bihealth/sodar_core/tree/v0.13.0>`_.
 
 
 Installation for Development
@@ -159,3 +159,20 @@ Once the installation is successful, you can continue to add your own
 SODAR based apps. See
 `SODAR Core documentation <https://sodar-core.readthedocs.io/>`_.
 for further instructions.
+
+
+Updating This Repository
+========================
+
+Below is a checklist for updating the SODAR Django Site repository for a new
+SODAR Core version, applicable to SODAR Core developers.
+
+- Upgrade system dependencies (if changed)
+- Upgrade Python dependencies (if changed)
+- Update utility scripts (if changed)
+- Update Django settings files (if changed)
+- Update URL config (if changed)
+- Any other SODAR Core version specific updates if applicable
+- Reinstall versioneer (if versioneer has been upgraded)
+- Update SODAR version in requirements
+- Update version number in docs
