@@ -128,8 +128,11 @@ EMAIL_SUBJECT_PREFIX = env('EMAIL_SUBJECT_PREFIX', default='')
 
 # MANAGER CONFIGURATION
 # ------------------------------------------------------------------------------
-# TODO: add your information here
-ADMINS = [("""YOUR NAME HERE""", 'YOUR.EMAIL@example.com')]
+# Provide ADMINS as: Name:email,Name:email
+ADMINS = [
+    x.split(':')
+    for x in env.list('ADMINS', default=['Admin User:admin@example.com'])
+]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS

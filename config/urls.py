@@ -29,27 +29,27 @@ urlpatterns = [
     path('icons/', include('dj_iconify.urls')),
     # Projectroles URLs
     path('project/', include('projectroles.urls')),
-    # Timeline URLs
-    path('timeline/', include('timeline.urls')),
+    # Admin Alerts URLs
+    path('alerts/adm/', include('adminalerts.urls')),
+    # App Alerts URLs
+    path('alerts/app/', include('appalerts.urls')),
+    # Background Jobs URLs
+    path('bgjobs/', include('bgjobs.urls')),
     # Filesfolders URLs
     path('files/', include('filesfolders.urls')),
     # django-db-file-storage URLs (obfuscated for users)
     # TODO: Change the URL to something obfuscated (e.g. random string)
     path('DJANGO-DB-FILE-STORAGE-CHANGE-ME/', include('db_file_storage.urls')),
-    # Background Jobs URLs
-    path('bgjobs/', include('bgjobs.urls')),
-    # Data Cache app
-    path('cache/', include('sodarcache.urls')),
-    # User Profile URLs
-    path('user/', include('userprofile.urls')),
-    # Admin Alerts URLs
-    path('alerts/adm/', include('adminalerts.urls')),
-    # App Alerts URLs
-    path('alerts/app/', include('appalerts.urls')),
-    # Site Info URLs
     path('siteinfo/', include('siteinfo.urls')),
     # API Tokens URLs
+    # SODAR Cache app
+    path('cache/', include('sodarcache.urls')),
+    # Timeline URLs
+    path('timeline/', include('timeline.urls')),
+    # Site Info URLs
     path('tokens/', include('tokens.urls')),
+    # User Profile URLs
+    path('user/', include('userprofile.urls')),
     # TODO: Add URLs of your own apps here
     # These are the SAML2 related URLs. You can change "^saml2_auth/" regex to
     # any path you want, like "^sso_auth/", "^sso_login/", etc. (required)

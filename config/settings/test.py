@@ -18,6 +18,11 @@ TEMPLATES[0]['OPTIONS']['debug'] = True
 # Note: This key only used for development and testing.
 SECRET_KEY = env('DJANGO_SECRET_KEY', default='CHANGEME!!!')
 
+# MANAGER CONFIGURATION
+# ------------------------------------------------------------------------------
+ADMINS = [('Admin User', 'admin@example.com')]
+MANAGERS = ADMINS
+
 # Mail settings
 # ------------------------------------------------------------------------------
 EMAIL_HOST = 'localhost'
@@ -104,9 +109,6 @@ PROJECTROLES_SIDEBAR_ICON_SIZE = 36
 # Bgjobs app settings
 BGJOBS_PAGINATION = 15
 
-# Timeline app settings
-TIMELINE_PAGINATION = 15
-
 # Adminalerts app settings
 ADMINALERTS_PAGINATION = 15
 
@@ -119,6 +121,9 @@ FILESFOLDERS_MAX_ARCHIVE_SIZE = 52428800
 FILESFOLDERS_SERVE_AS_ATTACHMENT = False
 FILESFOLDERS_LINK_BAD_REQUEST_MSG = 'Invalid request'
 FILESFOLDERS_SHOW_LIST_COLUMNS = True
+
+# Timeline app settings
+TIMELINE_PAGINATION = 15
 
 # UI test settings
 PROJECTROLES_TEST_UI_CHROME_OPTIONS = [
