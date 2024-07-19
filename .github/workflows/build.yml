@@ -7,12 +7,12 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - '3.8'
           - '3.9'
           - '3.10'
+          - '3.11'
     services:
       postgres:
-        image: postgres:11
+        image: postgres:16
         env:
           POSTGRES_DB: sodar_core
           POSTGRES_USER: sodar_core
@@ -42,7 +42,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Install project Python dependencies
         run: |
-          pip install "wheel>=0.38.4, <0.39"
+          pip install "wheel>=0.42.0, <0.43"
           pip install -r requirements/local.txt
           pip install -r requirements/test.txt
       - name: Download icons
@@ -53,7 +53,7 @@ jobs:
         run: python manage.py test -v 2 --settings=config.settings.test
       - name: Check linting
         run: flake8 .
-        if: ${{ matrix.python-version == '3.8' }}
+        if: ${{ matrix.python-version == '3.11' }}
       - name: Check formatting
         run: make black arg=--check
-        if: ${{ matrix.python-version == '3.8' }}
+        if: ${{ matrix.python-version == '3.11' }}
