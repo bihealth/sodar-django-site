@@ -8,7 +8,7 @@ setuptools>=70.0.0, <70.1
 packaging>=23.2, <24.0
 
 # Django
-django>=4.2.14, <5.0
+django>=4.2.15, <5.0
 
 # Configuration
 django-environ>=0.11.2, <0.12
@@ -85,6 +85,6 @@ celery>=5.3.6, <5.4
 django-autocomplete-light==3.11.0  # See issue #1224
 
 # SODAR Core
-django-sodar-core==1.0.0
+django-sodar-core==1.0.1
 # Use below for develop installs with a commit ID
 # -e git+https://github.com/bihealth/sodar-core.git@888d594d342984ab430e5e2d624c0cfda68d2eaa#egg=django-sodar-core
