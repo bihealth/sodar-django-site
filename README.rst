@@ -7,7 +7,7 @@ SODAR Django Site
 .. image:: https://img.shields.io/badge/License-MIT-yellow.svg
     :target: https://opensource.org/licenses/MIT
 
-This project contains a minimal `Django 4.2 <https://docs.djangoproject.com/en/4.2/>`_
+This project contains a minimal `Django 5.2 <https://docs.djangoproject.com/en/5.2/>`_
 site template for building `SODAR Core <https://github.com/bihealth/sodar_core>`_
 based projects.
 
@@ -24,14 +24,14 @@ It is also readily compatible with Selenium UI testing, coverage checking and
 continuous integration for GitHub Actions and GitLab-CI.
 
 The current version of this site is compatible with
-`SODAR Core v1.2.0 <https://github.com/bihealth/sodar_core/tree/v1.2.0>`_.
+`SODAR Core v1.3.0 <https://github.com/bihealth/sodar_core/tree/v1.3.0>`_.
 
 
 Installation for Development
 ============================
 
 For instructions and best practices in Django development, see
-`Django 4.2 documentation <https://docs.djangoproject.com/en/4.2/>`_ and
+`Django 5.2 documentation <https://docs.djangoproject.com/en/5.2/>`_ and
 `Two Scoops of Django <https://www.feldroy.com/collections/everything/products/two-scoops-of-django-3-x>`_.
 
 For SODAR Core concepts and instructions, see
@@ -44,13 +44,13 @@ Requirements
 ------------
 
 - Ubuntu 24.04 (Recommended for development)
-- Python 3.9, 3.10 or 3.11
+- Python 3.11, 3.12 or 3.13
 - Postgres 12+ (v16 recommended)
 
 System Installation
 -------------------
 
-First you need to install OS dependencies, PostgreSQL 16 and Python 3.9+.
+First you need to install OS dependencies, PostgreSQL 16 and Python 3.11+.
 
 .. code-block:: console
 
