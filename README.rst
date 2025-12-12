@@ -24,7 +24,7 @@ It is also readily compatible with Selenium UI testing, coverage checking and
 continuous integration for GitHub Actions and GitLab-CI.
 
 The current version of this site is compatible with
-`SODAR Core v1.3.0 <https://github.com/bihealth/sodar_core/tree/v1.3.0>`_.
+`SODAR Core v1.3.1 <https://github.com/bihealth/sodar_core/tree/v1.3.1>`_.
 
 
 Installation for Development
@@ -65,19 +65,20 @@ Create a PostgreSQL user and a database for your application. Make sure to
 give the user the permission to create further PostgreSQL databases (used for
 testing).
 
-You can either use the helper script in ``utility/setup_database.sh`` or use
-psql manually. Make sure to replace the example values below with your actual
-database name, user name and password.
+You can either use the helper script in ``utility/setup_database.sh`` (if
+running a PostgreSQL server locally) or use ``psql`` manually. Make sure to
+replace the example values below with your actual database name, user name and
+password.
 
 .. code-block:: console
 
     $ sudo su - postgres
     $ psql
-    $ CREATE DATABASE your_db;
-    $ CREATE USER your_user WITH PASSWORD 'your_password';
-    $ GRANT ALL PRIVILEGES ON DATABASE your_db to your_user;
-    $ ALTER USER your_user CREATEDB;
-    $ \q
+    > CREATE DATABASE your_db;
+    > CREATE USER your_user WITH PASSWORD 'your_password';
+    > ALTER DATABASE your_db OWNER TO your_user;
+    > ALTER USER your_user CREATEDB;
+    > \q
 
 You have to add the credentials in the environment variable ``DATABASE_URL``.
 For development it is recommended to place this variable in an ``.env`` file and

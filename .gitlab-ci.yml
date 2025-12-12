@@ -22,7 +22,6 @@ before_script:
   - sh ./utility/install_chrome_gitlab.sh
   - python3 -m venv ./env
   - source env/bin/activate
-  - pip3 install "wheel>=0.45.1, <0.46"
   - pip3 install -r ./requirements/local.txt
   - pip3 install -r ./requirements/test.txt
 

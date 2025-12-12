@@ -2,6 +2,8 @@
 
 echo "***********************************************"
 echo "Setting up Database and User for PostgreSQL"
+echo "NOTE: Assumes PostgreSQL running locally"
+echo "NOTE: Does not work with e.g. Docker"
 echo "***********************************************"
 
 # while loops to ensure input not empty
@@ -46,7 +48,7 @@ then
     echo ""
     choice=-1
     # Choice has to be in range and an integer
-    while (( $choice < 0 )) || (( $choice > ${#user_array[@] - 1} )) || ! [ "$choice" -eq "$choice" ]
+    while (( $choice < 0 )) || (( $choice > ${#user_array[@]} - 1 ))
     do
         echo "Choose an existing user"
         idx=0
@@ -84,5 +86,5 @@ if [ "$use_existing_user" == "n" ]
 then
     sudo su - postgres -c "psql -c \"CREATE USER $username WITH PASSWORD '$password';\""
 fi
-sudo su - postgres -c "psql -c \"GRANT ALL PRIVILEGES ON DATABASE $db_name to $username;\""
+sudo su - postgres -c "psql -c \"ALTER DATABASE $db_name OWNER TO $username;\""
 sudo su - postgres -c "psql -c \"ALTER USER $username CREATEDB;\""
