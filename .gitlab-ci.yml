@@ -29,8 +29,8 @@ all_tests:
   script:
     - python3 manage.py geticons
     - python3 manage.py collectstatic --noinput
+    - make format-check
+    - make lint
     - coverage run --source="." manage.py test -v 2 --settings=config.settings.test
     - coverage report
-    - make black arg=--check
-    - flake8 .
   when: on_success

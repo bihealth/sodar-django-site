@@ -53,8 +53,7 @@ THIRD_PARTY_APPS = [
     'crispy_bootstrap4',  # Bootstrap4 theme for Crispy
     'rules.apps.AutodiscoverRulesConfig',  # Django rules engine
     'djangoplugins',  # Django plugins
-    'pagedown',  # For markdown
-    'markupfield',  # For markdown
+    'martor',  # For markdown
     'rest_framework',  # For API views
     'knox',  # For token auth
     'social_django',  # For OIDC authentication
@@ -262,14 +261,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.'
         'UserAttributeSimilarityValidator'
     },
-    {
-        'NAME': 'django.contrib.auth.password_validation.'
-        'MinimumLengthValidator'
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.'
-        'CommonPasswordValidator'
-    },
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
     {
         'NAME': 'django.contrib.auth.password_validation.'
         'NumericPasswordValidator'
@@ -315,6 +308,29 @@ CELERYD_TASK_TIME_LIMIT = 5 * 60
 CELERYD_TASK_SOFT_TIME_LIMIT = 60
 # https://docs.celeryq.dev/en/latest/userguide/configuration.html#broker-connection-retry-on-startup
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = False
+
+
+# Martor Configuration for Markdown
+# ------------------------------------------------------------------------------
+# NOTE: Setting CSRF_COOKIE_HTTPONLY to `False` is required for AJAX uploads
+# Choose your preferred theme: "bootstrap" or "semantic"
+MARTOR_THEME = env.str('MARTOR_THEME', 'bootstrap')
+MARTOR_ENABLE_LABEL = env.bool('MARTOR_ENABLE_LABEL', True)
+MARTOR_ENABLE_CONFIGS = {
+    'imgur': env.str('MARTOR_ENABLE_CONFIG_IMGUR', 'false'),
+    'mention': env.str('MARTOR_ENABLE_CONFIG_MENTION', 'false'),
+    'jquery': env.str('MARTOR_ENABLE_CONFIG_JQUERY', 'false'),
+    'living': env.str('MARTOR_ENABLE_CONFIG_LIVING', 'true'),
+    'spellcheck': env.str('MARTOR_ENABLE_CONFIG_SPELLCHECK', 'false'),
+    'hljs': env.str('MARTOR_ENABLE_CONFIG_HLJS', 'false'),
+}
+# By default, martor loads bootstrap v5. We don't want that, so we supply an
+# alternative CSS file.
+MARTOR_ALTERNATIVE_CSS_FILE_THEME = env.str(
+    'MARTOR_ALTERNATIVE_CSS_FILE_THEME',
+    'projectroles/css/martor_theme.css',
+)
+MARTOR_ENABLE_ADMIN_CSS = env.bool('MARTOR_ENABLE_ADMIN_CSS', False)
 
 
 # API Settings
@@ -510,7 +526,7 @@ if AXES_ENABLED:
     AXES_COOLOFF_TIME = env.int('AXES_COOLOFF_TIME', None)
     # Lockout parameters. by default, block by username only (GRPR compliance)
     AXES_LOCKOUT_PARAMETERS = env.list(
-        'AXES_LOCKOUT_PARAMETERS', default=['username']
+        'AXES_LOCKOUT_PARAMETERS', default=['ip_address', 'username']
     )
     # Only enable lock for admin site if True
     AXES_ONLY_ADMIN_SITE = env.bool('AXES_ONLY_ADMIN_SITE', False)
