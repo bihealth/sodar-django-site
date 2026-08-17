@@ -1,11 +1,11 @@
 # Setuptools
-setuptools>=82.0.1, <83.0
+setuptools>=83.0.0, <84.0
 
 # Packaging
 packaging>=26.2, <27.0
 
 # Django
-django>=5.2.16, <6.0
+django>=5.2.17, <6.0
 
 # Configuration
 django-environ>=0.13.0, <0.14
@@ -89,4 +89,4 @@ django-autocomplete-light>=5.0.0, <5.1
 drf-spectacular>=0.29.0, <0.30
 
 # SODAR Core
-django-sodar-core==1.4.2
+django-sodar-core==1.4.3
