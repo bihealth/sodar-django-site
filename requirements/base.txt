@@ -89,4 +89,4 @@ django-autocomplete-light>=5.0.0, <5.1
 drf-spectacular>=0.29.0, <0.30
 
 # SODAR Core
-django-sodar-core==1.4.3
+django-sodar-core==1.4.4
