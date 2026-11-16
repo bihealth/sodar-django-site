@@ -7,9 +7,9 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - '3.11'
           - '3.12'
           - '3.13'
+          - '3.14'
     services:
       postgres:
         image: postgres:16
@@ -50,9 +50,9 @@ jobs:
         run: python manage.py collectstatic --noinput
       - name: Check formatting
         run: make format-check
-        if: ${{ matrix.python-version == '3.13' }}
+        if: ${{ matrix.python-version == '3.14' }}
       - name: Check linting
         run: make lint
-        if: ${{ matrix.python-version == '3.13' }}
+        if: ${{ matrix.python-version == '3.14' }}
       - name: Run tests
         run: python manage.py test -v 2 --settings=config.settings.test

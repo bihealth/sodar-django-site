@@ -24,7 +24,7 @@ It is also readily compatible with Selenium UI testing, coverage checking and
 continuous integration for GitHub Actions and GitLab-CI.
 
 The current version of this site is compatible with
-`SODAR Core v1.4.4 <https://github.com/bihealth/sodar_core/tree/v1.4.4>`_.
+`SODAR Core v1.5.1 <https://github.com/bihealth/sodar_core/tree/v1.5.1>`_.
 
 
 Installation for Development
@@ -44,7 +44,7 @@ Requirements
 ------------
 
 - Ubuntu 24.04 (Recommended for development)
-- Python 3.11, 3.12 or 3.13
+- Python 3.12, 3.13 or 3.14
 - Postgres 12+ (v16 recommended)
 
 System Installation
@@ -174,6 +174,6 @@ SODAR Core version, applicable to SODAR Core developers.
 - Update Django settings files (if changed)
 - Update URL config (if changed)
 - Any other SODAR Core version specific updates if applicable
-- Reinstall versioneer (if versioneer has been upgraded)
-- Update SODAR version in requirements
+- Update SODAR Core version in requirements
+- Update CI workflow if changed
 - Update version number in docs

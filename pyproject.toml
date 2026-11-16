@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=82.0.1", "versioneer[toml]==0.29"]
+requires = ["setuptools>=84.2.1, <85.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.ruff]
@@ -13,9 +13,7 @@ exclude = [
     "env",
     "src",
     "docs_manual",
-    "versioneer.py",
     "node_modules",
-    "_version.py"
 ]
 
 [tool.ruff.format]
@@ -29,10 +27,8 @@ exclude = [
     "docs_manual",
     "node_modules",
     "config/*",
-    "versioneer.py",
     "env/*",
     ".venv",
-    "_version.py"
 ]
 ignore = ["E203", "E266", "E501", "F405"]
 select = ["E", "F", "W"]
