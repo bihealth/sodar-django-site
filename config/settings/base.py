@@ -733,6 +733,8 @@ PROJECTROLES_ROLE_PAGINATION = env.int('PROJECTROLES_ROLE_PAGINATION', 15)
 # )
 # Custom message to be displayed if site read-only mode is enabled
 # PROJECTROLES_READ_ONLY_MSG = env.str('PROJECTROLES_READ_ONLY_MSG', None)
+# Enable user list in UI and API if set True
+# PROJECTROLES_USER_LIST_ENABLE = env.bool('PROJECTROLES_USER_LIST_ENABLE', True)
 # Restrict REST API user list/details access to users with project roles
 # PROJECTROLES_API_USER_DETAIL_RESTRICT = env.bool(
 #     'PROJECTROLES_API_USER_DETAIL_RESTRICT', False
